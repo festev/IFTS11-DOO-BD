@@ -17,6 +17,6 @@ if __name__ == "__main__":
     #TESTS
     schema = "Nombre,Apellido,Edad,Mail"
     row = "Roberto,Gutierrez,33,abc123@gmail.com"
-    o = Str2Dic(schema)
-    d = o.convert(row)
-    print(d)
+    obj1 = Str2Dic(schema)
+    diccionario = obj1.convert(row)
+    print(diccionario)
