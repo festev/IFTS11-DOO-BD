@@ -24,7 +24,7 @@ class Coleccion():
         if id_documento in self.documentos: #busca si una clave coincide, ¿podrá buscar por valores?
             del self.documentos[id_documento] #elimina el documento con el id de clave
 
-    def search_documento(self, id_documento):
+    def search_documento(self, id_documento) -> Documento:
         return self.documentos.get(id_documento, None)
     
     def __str__(self):
@@ -42,22 +42,28 @@ class BD:
         if nombre_coleccion in self.colecciones:
             del self.colecciones[nombre_coleccion]
             
-    def search_coleccion(self, nombre_coleccion) -> Coleccion:
+    def search_coleccion(self, nombre_coleccion) -> Coleccion: #Por agregar esta notación, al poner un . el autocompletado me sugiere los métodos de la clase Coleccion
         return self.colecciones.get(nombre_coleccion, None)
     
     def __str__(self):
-        return f"BD '{self.nombre}' con {len(self.colecciones)} colecciones y {len(self.documentos)} documentos."
+        return f"BD con {len(self.colecciones)} colecciones."
     
-a = Documento(1,"holi")
-print(a.__str__())
+if __name__ == "__main__":
 
-b = Documento(2)
-b.setter("nombre","Federico")
-b.setter("edad","54")
-b.setter("altura","1,30")
+    #TESTS
+    a = Documento(1,"holi")
+    print(a)
 
-print(b.__str__())
+    b = Documento(2)
+    b.setter("nombre","Federico")
+    b.setter("edad","54")
+    b.setter("altura","1,30")
 
-BD1 = BD()
-BD1.add_coleccion("Animales")
-BD1.search_coleccion("Animales").
+    print(b)
+
+    BD1 = BD()
+    BD1.add_coleccion("Animales")
+    BD1.search_coleccion("Animales").add_documento(b)
+    print(BD1)
+    print(BD1.search_coleccion("Animales"))
+    print(BD1.search_coleccion("Animales").search_documento(2))
